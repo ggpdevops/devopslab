@@ -41,7 +41,7 @@ function Home() {
   return (
     <div className="min-h-screen relative">
       {/* Hero Background */}
-      <div 
+      <div
         className="fixed inset-0 -z-10"
         style={{
           backgroundImage: "url('https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&q=80')",
@@ -88,7 +88,7 @@ function Home() {
                 </ul>
               )}
             </div>
-            <button 
+            <button
               className="bg-purple-700 hover:bg-purple-900 text-white rounded-xl px-6 py-3 font-medium transition-colors flex-shrink-0"
             >
               Search

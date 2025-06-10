@@ -8,7 +8,7 @@ const Contact = () => {
     subject: '',
     message: ''
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
 
@@ -16,7 +16,7 @@ const Contact = () => {
   useEffect(() => {
     // Check if the leaflet script is already added
     const hasLeaflet = document.getElementById('leaflet-css') && document.getElementById('leaflet-js');
-    
+
     if (!hasLeaflet) {
       // Add Leaflet CSS
       const leafletCSS = document.createElement('link');
@@ -24,7 +24,7 @@ const Contact = () => {
       leafletCSS.rel = 'stylesheet';
       leafletCSS.href = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css';
       document.head.appendChild(leafletCSS);
-      
+
       // Add Leaflet JS
       const leafletScript = document.createElement('script');
       leafletScript.id = 'leaflet-js';
@@ -35,7 +35,7 @@ const Contact = () => {
       // Leaflet is already loaded, just initialize the map
       initializeMap();
     }
-    
+
     // Cleanup function to remove event listeners
     return () => {
       if (window.mapInstance) {
@@ -44,7 +44,7 @@ const Contact = () => {
       }
     };
   }, []);
-  
+
   const initializeMap = () => {
     // Give a moment for Leaflet to fully load
     setTimeout(() => {
@@ -53,19 +53,19 @@ const Contact = () => {
         if (!window.mapInstance) {
           // Office location (example coordinates - this is New York City)
           const officeLocation = [40.7128, -74.0060];
-          
+
           // Initialize the map
           const map = window.L.map('map').setView(officeLocation, 13);
-          
+
           // Add OpenStreetMap tiles
           window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           }).addTo(map);
-          
+
           // Add a marker for the office location
           const marker = window.L.marker(officeLocation).addTo(map);
           marker.bindPopup("<b>TravelTech Headquarters</b><br>123 Travel Street<br>Adventure City").openPopup();
-          
+
           // Store map instance for cleanup
           window.mapInstance = map;
         }
@@ -84,7 +84,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
@@ -95,7 +95,7 @@ const Contact = () => {
         subject: '',
         message: ''
       });
-      
+
       // Clear success message after 5 seconds
       setTimeout(() => {
         setSubmitMessage('');
@@ -118,7 +118,7 @@ const Contact = () => {
           <div className="bg-white shadow rounded-lg overflow-hidden">
             <div className="px-6 py-8">
               <h2 className="text-xl font-semibold text-gray-900 mb-6">Contact Information</h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
@@ -129,21 +129,21 @@ const Contact = () => {
                     <p>Adventure City, AC 10101</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center">
                   <Phone className="h-6 w-6 text-indigo-600" />
                   <div className="ml-3 text-base text-gray-700">
                     <p>+1 (555) 123-4567</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center">
                   <Mail className="h-6 w-6 text-indigo-600" />
                   <div className="ml-3 text-base text-gray-700">
                     <p>contact@traveltech.com</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <Clock className="h-6 w-6 text-indigo-600" />
                   <div className="ml-3 text-base text-gray-700">
@@ -152,7 +152,7 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Social Media Links */}
               <div className="mt-8">
                 <h3 className="text-lg font-medium text-gray-900 mb-4">Follow Us</h3>
@@ -186,13 +186,13 @@ const Contact = () => {
           <div className="bg-white shadow rounded-lg overflow-hidden">
             <div className="px-6 py-8">
               <h2 className="text-xl font-semibold text-gray-900 mb-6">Send us a Message</h2>
-              
+
               {submitMessage && (
                 <div className="mb-6 p-4 bg-green-50 border border-green-200 text-green-700 rounded-md">
                   {submitMessage}
                 </div>
               )}
-              
+
               <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                   <div>
@@ -209,7 +209,7 @@ const Contact = () => {
                       required
                     />
                   </div>
-                  
+
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                       Email Address
@@ -225,7 +225,7 @@ const Contact = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div className="mb-6">
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
                     Subject
@@ -240,7 +240,7 @@ const Contact = () => {
                     required
                   />
                 </div>
-                
+
                 <div className="mb-6">
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                     Message
@@ -255,7 +255,7 @@ const Contact = () => {
                     required
                   ></textarea>
                 </div>
-                
+
                 <div>
                   <button
                     type="submit"
@@ -288,23 +288,23 @@ const Contact = () => {
       {/* FAQ Section */}
       <div className="mt-16">
         <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
-        
+
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="bg-white shadow rounded-lg p-6">
             <h3 className="text-lg font-medium text-gray-900 mb-2">How quickly can I expect a response?</h3>
             <p className="text-gray-600">We typically respond to all inquiries within 24 hours during business days.</p>
           </div>
-          
+
           <div className="bg-white shadow rounded-lg p-6">
             <h3 className="text-lg font-medium text-gray-900 mb-2">Do you offer emergency support?</h3>
             <p className="text-gray-600">Yes, we provide 24/7 emergency travel support for clients currently on trips.</p>
           </div>
-          
+
           <div className="bg-white shadow rounded-lg p-6">
             <h3 className="text-lg font-medium text-gray-900 mb-2">Can I schedule a consultation call?</h3>
             <p className="text-gray-600">Absolutely! Use our contact form to request a call and we'll schedule a time that works for you.</p>
           </div>
-          
+
           <div className="bg-white shadow rounded-lg p-6">
             <h3 className="text-lg font-medium text-gray-900 mb-2">Do you have offices in other locations?</h3>
             <p className="text-gray-600">Currently, we operate from our main office in Adventure City, but we serve clients globally.</p>

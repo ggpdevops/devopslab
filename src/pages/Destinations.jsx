@@ -45,7 +45,7 @@ export default function Destinations() {
             Explore sustainable travel options that help preserve our planet while enjoying unforgettable experiences
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {destinations.map((place) => (
             <div
@@ -55,10 +55,10 @@ export default function Destinations() {
               onMouseLeave={() => setHoveredCard(null)}
             >
               <div className="relative">
-                <img 
-                  src={place.image} 
-                  alt={place.name} 
-                  className="w-full h-56 object-cover" 
+                <img
+                  src={place.image}
+                  alt={place.name}
+                  className="w-full h-56 object-cover"
                 />
                 <div className="absolute top-4 right-4">
                   <span className="inline-block text-sm font-medium text-green-700 bg-green-100 bg-opacity-90 rounded-full px-3 py-1">
@@ -66,24 +66,24 @@ export default function Destinations() {
                   </span>
                 </div>
               </div>
-              
+
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">{place.name}</h3>
                 <p className="text-gray-600 mb-4">{place.description}</p>
-                
+
                 <div className="flex flex-wrap gap-2">
                   {place.tags.map((tag, index) => (
-                    <span 
-                      key={index} 
+                    <span
+                      key={index}
                       className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-                
+
                 <div className={`mt-4 transition-opacity duration-300 ${hoveredCard === place.id ? 'opacity-100' : 'opacity-0'}`}>
-                  <button 
+                  <button
                     className="w-full py-2 bg-purple-900 hover:bg-purple-800 text-white font-medium rounded-lg transition-colors"
                     onClick={() => handleExploreClick(place.id)}
                   >

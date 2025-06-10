@@ -50,43 +50,43 @@ function AuthForm() {
     <div className="fixed inset-0 -z-10 bg-gray-100">
       {/* Popup */}
       {popup.open && (
-  <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/40 animate-fadeIn">
-    <div className="relative bg-white rounded-2xl shadow-2xl p-8 min-w-[320px] max-w-[90vw] border-t-4 border-purple-500 animate-popup flex flex-col items-center text-center">
-      <div className="flex flex-col items-center gap-3 mb-3">
-        {popup.type === 'error' ? (
-          <svg className="w-10 h-10 text-red-500 mb-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 9l-6 6m0-6l6 6"/>
-          </svg>
-        ) : (
-          <svg className="w-10 h-10 text-green-500 mb-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2l4-4"/>
-          </svg>
-        )}
-        <span className={`text-lg font-semibold ${popup.type === 'error' ? 'text-red-600' : 'text-green-600'}`}>
-          {popup.type === 'error' ? 'Error' : 'Success'}
-        </span>
-      </div>
-      <div className="mb-6 text-gray-700 text-base">{popup.message}</div>
-      <button
-        onClick={closePopup}
-        className="w-full py-2 rounded bg-purple-500 hover:bg-purple-700 text-white font-medium transition"
-      >
-        Close
-      </button>
-    </div>
-    {/* Animations */}
-    <style>
-      {`
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/40 animate-fadeIn">
+          <div className="relative bg-white rounded-2xl shadow-2xl p-8 min-w-[320px] max-w-[90vw] border-t-4 border-purple-500 animate-popup flex flex-col items-center text-center">
+            <div className="flex flex-col items-center gap-3 mb-3">
+              {popup.type === 'error' ? (
+                <svg className="w-10 h-10 text-red-500 mb-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 9l-6 6m0-6l6 6" />
+                </svg>
+              ) : (
+                <svg className="w-10 h-10 text-green-500 mb-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2l4-4" />
+                </svg>
+              )}
+              <span className={`text-lg font-semibold ${popup.type === 'error' ? 'text-red-600' : 'text-green-600'}`}>
+                {popup.type === 'error' ? 'Error' : 'Success'}
+              </span>
+            </div>
+            <div className="mb-6 text-gray-700 text-base">{popup.message}</div>
+            <button
+              onClick={closePopup}
+              className="w-full py-2 rounded bg-purple-500 hover:bg-purple-700 text-white font-medium transition"
+            >
+              Close
+            </button>
+          </div>
+          {/* Animations */}
+          <style>
+            {`
         .animate-fadeIn { animation: fadeInBg 0.2s; }
         .animate-popup { animation: popupScale 0.25s; }
         @keyframes fadeInBg { from { opacity: 0; } to { opacity: 1; } }
         @keyframes popupScale { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
       `}
-    </style>
-  </div>
-)}
+          </style>
+        </div>
+      )}
       <div className="min-h-screen pt-[64px] px-6 flex items-center justify-center">
         <div className="w-full max-w-[500px] mx-auto">
           <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl">

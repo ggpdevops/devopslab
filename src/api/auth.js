@@ -8,12 +8,12 @@ router.post('/signup', async (req, res) => {
   try {
     const { fullName, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
-    
+
     const [result] = await pool.execute(
       'INSERT INTO users (full_name, email, password) VALUES (?, ?, ?)',
       [fullName, email, hashedPassword]
     );
-    
+
     res.status(201).json({ message: 'User created successfully' });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -23,7 +23,7 @@ router.post('/signup', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    
+
     const [users] = await pool.execute(
       'SELECT * FROM users WHERE email = ?',
       [email]
@@ -40,7 +40,7 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
-    res.json({ 
+    res.json({
       message: 'Login successful',
       user: {
         id: user.id,

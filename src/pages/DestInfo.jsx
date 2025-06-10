@@ -106,11 +106,10 @@ export default function DestInfo() {
         {/* Image Carousel */}
         <div className="relative w-full h-full">
           {place.images.map((img, index) => (
-            <div 
+            <div
               key={index}
-              className={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 ease-in-out ${
-                index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
-              }`}
+              className={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                }`}
             >
               <img
                 src={img}
@@ -119,7 +118,7 @@ export default function DestInfo() {
               />
             </div>
           ))}
-          
+
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
@@ -130,7 +129,7 @@ export default function DestInfo() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          
+
           <button
             onClick={nextSlide}
             className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full p-3 shadow-lg transition-all z-10"
@@ -140,27 +139,26 @@ export default function DestInfo() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
-          
+
           {/* Image Indicators */}
           <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
             {place.images.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  index === currentSlide 
-                    ? 'bg-white w-6' 
+                className={`w-3 h-3 rounded-full transition-all ${index === currentSlide
+                    ? 'bg-white w-6'
                     : 'bg-white bg-opacity-50 hover:bg-opacity-75'
-                }`}
+                  }`}
                 aria-label={`Go to image ${index + 1}`}
               />
             ))}
           </div>
-          
+
           {/* Overlay Gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         </div>
-        
+
         {/* Destination Title Overlay */}
         <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
           <div className="max-w-6xl mx-auto">
@@ -171,44 +169,41 @@ export default function DestInfo() {
           </div>
         </div>
       </div>
-      
+
       {/* Content Section */}
       <div className="max-w-6xl mx-auto px-4 -mt-6 relative z-10">
         <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
           {/* Navigation Tabs */}
           <div className="flex border-b border-gray-200 mb-6 overflow-x-auto">
-            <button 
-              className={`px-4 py-3 font-medium text-sm transition-colors ${
-                activeTab === 'about' 
-                  ? 'text-teal-600 border-b-2 border-teal-600' 
+            <button
+              className={`px-4 py-3 font-medium text-sm transition-colors ${activeTab === 'about'
+                  ? 'text-teal-600 border-b-2 border-teal-600'
                   : 'text-gray-500 hover:text-gray-700'
-              }`}
+                }`}
               onClick={() => setActiveTab('about')}
             >
               About
             </button>
-            <button 
-              className={`px-4 py-3 font-medium text-sm transition-colors ${
-                activeTab === 'activities' 
-                  ? 'text-teal-600 border-b-2 border-teal-600' 
+            <button
+              className={`px-4 py-3 font-medium text-sm transition-colors ${activeTab === 'activities'
+                  ? 'text-teal-600 border-b-2 border-teal-600'
                   : 'text-gray-500 hover:text-gray-700'
-              }`}
+                }`}
               onClick={() => setActiveTab('activities')}
             >
               Activities
             </button>
-            <button 
-              className={`px-4 py-3 font-medium text-sm transition-colors ${
-                activeTab === 'sustainability' 
-                  ? 'text-teal-600 border-b-2 border-teal-600' 
+            <button
+              className={`px-4 py-3 font-medium text-sm transition-colors ${activeTab === 'sustainability'
+                  ? 'text-teal-600 border-b-2 border-teal-600'
                   : 'text-gray-500 hover:text-gray-700'
-              }`}
+                }`}
               onClick={() => setActiveTab('sustainability')}
             >
               Sustainability
             </button>
           </div>
-          
+
           {/* Tab Content */}
           <div className="space-y-6">
             {activeTab === 'about' && (
@@ -216,12 +211,12 @@ export default function DestInfo() {
                 <p className="text-lg text-gray-700 leading-relaxed">
                   {place.description}
                 </p>
-                
+
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <h3 className="text-gray-800 font-medium mb-2">Best Time to Visit</h3>
                   <p className="text-gray-700">{place.bestTimeToVisit}</p>
                 </div>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                   <div className="bg-teal-50 p-6 rounded-lg">
                     <h3 className="text-teal-800 font-medium mb-3 flex items-center">
@@ -245,7 +240,7 @@ export default function DestInfo() {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div className="bg-blue-50 p-6 rounded-lg">
                     <h3 className="text-blue-800 font-medium mb-3 flex items-center">
                       <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -271,7 +266,7 @@ export default function DestInfo() {
                 </div>
               </div>
             )}
-            
+
             {activeTab === 'activities' && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {place.activities.map((activity, index) => (
@@ -287,7 +282,7 @@ export default function DestInfo() {
                 ))}
               </div>
             )}
-            
+
             {activeTab === 'sustainability' && (
               <div className="space-y-8">
                 <div className="bg-green-50 rounded-lg p-6">
@@ -295,7 +290,7 @@ export default function DestInfo() {
                   <p className="text-gray-700 mb-6">
                     {place.name} is committed to sustainable tourism practices that protect the environment and benefit local communities.
                   </p>
-                  
+
                   <div className="space-y-4">
                     {place.sustainableFeatures.map((feature, index) => (
                       <div key={index} className="flex items-start">
@@ -314,7 +309,7 @@ export default function DestInfo() {
                     ))}
                   </div>
                 </div>
-                
+
                 <div className="p-6 border border-gray-200 rounded-lg">
                   <h3 className="text-xl font-medium text-gray-800 mb-4">How You Can Help</h3>
                   <ul className="space-y-3">
@@ -339,9 +334,9 @@ export default function DestInfo() {
               </div>
             )}
           </div>
-          
+
           {/* Book Now Button */}
-          
+
         </div>
       </div>
     </div>
